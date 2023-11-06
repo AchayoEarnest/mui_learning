@@ -78,15 +78,22 @@ const EmployeeForm = () => {
             onChange={handleInputChange}
             options={employeeService.getDepartmentCollection()}
           />
+
+          <Controls.DatePicker
+            value={values.hireDate}
+            name="hireDate"
+            label="Hire Date"
+            onChange={handleInputChange}
+          />
+
           <Controls.Checkbox
             value={values.isPermanent}
             name="isPermanent"
             label="Permanent Employee"
             onChange={handleInputChange}
-            color= "primary"
-            checked = "false"
+            color="primary"
+            checked="false"
           />
-          
         </Grid>
       </Grid>
     </Form>

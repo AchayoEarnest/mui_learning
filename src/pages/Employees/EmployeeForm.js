@@ -29,6 +29,12 @@ const genderItems = [
   { id: "other", title: "Others" },
 ];
 
+// const validate = () => {
+//   let temp ={}
+
+//   temp.fullName =
+// }
+
 const EmployeeForm = () => {
   const { values, setValues, handleInputChange } = useForm(initialFValues);
 
@@ -94,6 +100,14 @@ const EmployeeForm = () => {
             color="primary"
             checked="false"
           />
+          <div>
+            <Controls.Button text="Submit" color="primary" type="submit" />
+            <Controls.Button
+              variant="contained"
+              text="Reset"
+              color="secondary"
+            />
+          </div>
         </Grid>
       </Grid>
     </Form>

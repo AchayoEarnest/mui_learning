@@ -1,6 +1,7 @@
 import {
   FormControl,
   FormControlLabel,
+  FormHelperText,
   FormLabel,
   InputLabel,
   MenuItem,
@@ -10,9 +11,9 @@ import {
 import React from "react";
 
 const Select = (props) => {
-  const { value, name, label, onChange, options } = props;
+  const { value, name, label, error = null, onChange, options } = props;
   return (
-    <FormControl variant="outlined">
+    <FormControl variant="outlined" {...(error && { error: true })}>
       <InputLabel>{label}</InputLabel>
       <MuiSelect
         variant="outlined"
@@ -28,6 +29,7 @@ const Select = (props) => {
           </MenuItem>
         ))}
       </MuiSelect>
+      {error && <FormHelperText>{error}</FormHelperText>}
     </FormControl>
   );
 };

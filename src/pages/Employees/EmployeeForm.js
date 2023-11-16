@@ -30,7 +30,7 @@ const genderItems = [
 ];
 
 const EmployeeForm = () => {
-  const { values, setValues, errors, setErrors, handleInputChange } =
+  const { values, setValues, errors, setErrors, resetForm, handleInputChange } =
     useForm(initialFValues);
 
   const validate = () => {
@@ -131,6 +131,7 @@ const EmployeeForm = () => {
               variant="contained"
               text="Reset"
               color="secondary"
+              onClick={resetForm}
             />
           </div>
         </Grid>

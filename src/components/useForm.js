@@ -13,11 +13,17 @@ export function useForm(initialFValues) {
     });
   };
 
+  const resetForm = () => {
+    setValues(initialFValues);
+    setErrors({});
+  };
+
   return {
     values,
     setValues,
     errors,
     setErrors,
+    resetForm,
     handleInputChange,
   };
 }

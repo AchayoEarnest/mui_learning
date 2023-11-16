@@ -7,6 +7,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(0.5),
   },
+  label: {
+    textTransform: "none",
+  },
 }));
 
 const Button = (props) => {
@@ -19,7 +22,7 @@ const Button = (props) => {
       text={text}
       size={size || "large"}
       {...other}
-      className={classes.root}
+      className={{ root: classes.root, label: classes.label }}
     >
       {text}
     </MuiButton>

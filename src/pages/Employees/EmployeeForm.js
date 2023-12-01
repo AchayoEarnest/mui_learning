@@ -30,33 +30,37 @@ const genderItems = [
 ];
 
 const EmployeeForm = () => {
-  const { values, setValues, errors, setErrors, resetForm, handleInputChange } =
-    useForm(initialFValues);
+  const validate = (fieldValues = values) => {
+    let temp = { ...errors };
 
-  const validate = () => {
-    let temp = {};
-    temp.fullName = values.fullName
-      ? ""
-      : "Please put in the right format for your email address!";
-    temp.email = /$^|.+@.+..+/.test(values.email)
-      ? ""
-      : "This field is required";
-    temp.mobile =
-      values.mobile.length > 9
+    if ("fullName" in fieldValues)
+      temp.fullName = fieldValues.fullName ? "" : "This field is required!";
+    if ("email" in fieldValues)
+      temp.email = /$^|.+@.+..+/.test(fieldValues.email)
         ? ""
-        : "The mobile number must be more than 10 digits!";
-    temp.departmentId =
-      values.departmentId.length != 0 ? "" : "This field is required";
+        : "Invalid email format";
+    if ("molbile" in fieldValues)
+      temp.mobile =
+        fieldValues.mobile.length > 9
+          ? ""
+          : "The mobile number must be more than 10 digits!";
+    if ("departmwntId" in fieldValues)
+      temp.departmentId =
+        fieldValues.departmentId.length != 0 ? "" : "This field is required";
     setErrors({
       ...temp,
     });
 
-    return Object.values(temp).every((x) => x == "");
+    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
   };
+
+  const { values, setValues, errors, setErrors, resetForm, handleInputChange } =
+    useForm(initialFValues, true, validate);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validate()) return window.alert("testing... Please keep going!");
+    if (validate()) employeeService.insertEmployee(values);
+    resetForm();
   };
 
   return (

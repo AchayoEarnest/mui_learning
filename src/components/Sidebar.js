@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 const Sidebar = () => {
   const classes = useStyles();
 
-  return <div className={classes.sideBar}></div>;
+  return <div className={classes.sideBar}>Cahayo Techlinks</div>;
 };
 
 export default Sidebar;

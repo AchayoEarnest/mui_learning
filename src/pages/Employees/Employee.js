@@ -27,7 +27,7 @@ const Employee = () => {
       />
 
       <Paper className={classes.pageContent}>
-        <EmployeeForm />
+        {/* <EmployeeForm />*/}
         <TblContainer>
           <TableBody>
             {records.map((item) => (
@@ -35,7 +35,7 @@ const Employee = () => {
                 <TableCell>{item.fullName}</TableCell>
                 <TableCell>{item.email}</TableCell>
                 <TableCell>{item.mobile}</TableCell>
-                <TableCell>{item.gender}</TableCell>
+                <TableCell>{item.department}</TableCell>
               </TableRow>
             ))}
           </TableBody>

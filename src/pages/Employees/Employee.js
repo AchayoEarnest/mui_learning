@@ -13,11 +13,20 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
   },
 }));
+
+const headCells = [
+  { id: "fullName", label: "Employee Name" },
+  { id: "email", label: "Emails Address(Personal)" },
+  { id: "mobile", label: "Mobile Number" },
+  { id: "department", label: "Department" },
+];
+
 const Employee = () => {
   const classes = useStyles();
   const [records, setRecords] = useState(employeeService.getAllEmployees());
 
-  const { TblContainer } = useTable();
+  const { TblContainer, TblHead, TblPagination, recordsAfterSortingAndPaging } =
+    useTable(records, headCells);
   return (
     <>
       <PageHeader
@@ -29,8 +38,9 @@ const Employee = () => {
       <Paper className={classes.pageContent}>
         {/* <EmployeeForm />*/}
         <TblContainer>
+          <TblHead />
           <TableBody>
-            {records.map((item) => (
+            {recordsAfterSortingAndPaging().map((item) => (
               <TableRow key={item.id}>
                 <TableCell>{item.fullName}</TableCell>
                 <TableCell>{item.email}</TableCell>
@@ -40,6 +50,7 @@ const Employee = () => {
             ))}
           </TableBody>
         </TblContainer>
+        <TblPagination />
       </Paper>
     </>
   );
